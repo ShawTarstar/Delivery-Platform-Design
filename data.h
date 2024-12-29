@@ -2,6 +2,7 @@
 #define DATA_H
 
 #include <QMainWindow>
+#include<QFile>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -56,7 +57,7 @@ class Users
 
 class Client:public Users
 {public:
-    Client(){}
+    Client();
     double discount[100];//优惠券
 
     Dish ShopCart[100];//购物车
@@ -66,12 +67,13 @@ class Client:public Users
 
 class Business:public Users
 {public:
-    Business(){}
+    Business();
+    Dish dishlist[100];
 };
 
 class Manager:public Users
 {public:
-    Manager(){}
+    Manager();
 };
 
 //
