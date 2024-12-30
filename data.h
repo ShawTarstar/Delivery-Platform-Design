@@ -5,6 +5,7 @@
 #include<QFile>
 #include<QSettings>
 #include<QDateTime>
+#include<QDir>
 #include"message_login.h"
 #include"rigister.h"
 
@@ -13,6 +14,8 @@ namespace Ui {
 class data;
 }
 QT_END_NAMESPACE
+class Client;
+class Order;
 class Dish
 {
 public:
@@ -23,10 +26,6 @@ public:
 
 
     Dish();
-    void setDish();//新增dish；修改dish信息（即使只需修改部分信息，也需要全部参数）
-    void deleteDish();//使用菜品名删除菜品
-    void saveDish();
-    void showDish();
 };
 
 
@@ -53,33 +52,19 @@ public:
     void saveFile();
 
 };
-
-class Client:public Users
-{public:
-    Client();
-    double discount[100];//优惠券
-
-    Dish ShopCart[100];//购物车
-
-    void addShopCart();//加入购物车
-    void deleteShopCart();//删除购物车商品
-
-};
-
 class Business:public Users
 {public:
     Business();
     Dish dishlist[100];
-
+    void addDishList();
+    void deleteDishList();
+    void modifyDishList();
 };
 
 class Manager:public Users
 {public:
     Manager();
 };
-
-//
-
 class Order
 {
 public:
@@ -93,6 +78,20 @@ public:
     void setOrder(Client &client,Business &business);//设置订单信息
     void saveOrder();
 };
+class Client:public Users
+{public:
+    Client();
+    double discount[100];//优惠券
+
+    Dish ShopCart[100];//购物车
+    Order orderList[100];
+    void addShopCart();//加入购物车
+    void deleteShopCart();//删除购物车商品
+    void creatOrder();
+
+};
+
+
 class data : public QMainWindow
 {
     Q_OBJECT
