@@ -5,6 +5,7 @@
 #include<QFile>
 #include<QSettings>
 #include<QDateTime>
+#include<QDir>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -21,10 +22,7 @@ public:
 
 
     Dish();
-    void setDish();//新增dish；修改dish信息（即使只需修改部分信息，也需要全部参数）
-    void deleteDish();//使用菜品名删除菜品
-    void saveDish();
-    void showDish();
+
 };
 
 
@@ -65,6 +63,9 @@ class Business:public Users
 {public:
     Business();
     Dish dishlist[100];
+    void addDishList();
+    void deleteDishList();
+    void modifyDishList();
 
 };
 
