@@ -5,13 +5,21 @@
 using namespace std;
 /******************************************
  * 用户函数页cpp
- * 在文件users_info.ini中存储用户信息。
- * 格式为：
- *
- * 用户名处使用‘*’占位.
- * users_info初始存在一个用户Alice
+ * 将用户信息存在users_info.ini文件中，格式为
+ * totalUsers=2
+ * [User1]
+ * accountType=1
+ * name="Alice"
+ * account="18211111111"
+ * password="123456"
+ * [User2]
+ * accountType=3
+ * name="Bob"
+ * account="18212221111"
+ * password="456789"
  * ****************************************/
-Users::Users(){}
+Users::Users(){
+}
 //调用以保存用户名
 void Users::setName(QString s)
 {
@@ -22,7 +30,7 @@ void Users:: setAcoount(QString a)
 {
     account=a;
 }
-
+//调用以保存用户密码
 void Users:: setPasswrod(QString p)
 {
     password=p;
@@ -32,11 +40,38 @@ void Users::setType(int n)
 {
     accountType=n;
 }
-
+/******************************************
+ * 函数search
+ * 使用类中的数据对文件users_info中的数据进行搜索。
+ * 使用前务必设置好类中数据account和password。
+ ******************************************/
 int Users::search()
 {
+    //遍历用户组，如果找到与account和password匹配的数据，则返回账户类型（1,2,3）
+    //如果找不到匹配数据，返回0
+    QSettings infoRead("users_info.ini", QSettings::IniFormat);
+    QStringList groups = infoRead.childGroups();
+    // 遍历每个用户组
+    for (const QString &group : groups) {
+        infoRead.beginGroup(group);
+
+        QString currentAccount = infoRead.value("account").toString();
+        QString currentPassword = infoRead.value("password").toString();
+
+        if (currentAccount == account && currentPassword == password) {
+            int type = infoRead.value("accountType").toInt();
+            infoRead.endGroup();
+            return type;
+        }
+        infoRead.endGroup();
+    }
     return 0;
 }
+/******************************************
+ * 函数saveFile
+ * 使用类中的数据对文件users_info中的数据进行搜索。
+ * 使用前务必设置好类中全部的数据以便保存。
+ ******************************************/
 void Users::saveFile()
 {
     QSettings infoWrite=QSettings("users_info.ini",QSettings::IniFormat);
@@ -55,5 +90,4 @@ void Users::saveFile()
     infoWrite.setValue("password", password);
     infoWrite.setValue("TotalUsers",currentID);
     infoWrite.endGroup();
-
 }
