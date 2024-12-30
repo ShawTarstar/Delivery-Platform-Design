@@ -1,16 +1,13 @@
 #include "data.h"
 #include "ui_data.h"
-#include <QFile>
-#include <QTextStream>
-#include <QDebug>
+#include <QApplication>
+#include <QSettings>
 using namespace std;
 /******************************************
  * 用户函数页cpp
- * 在文件users_info中存储用户信息。
+ * 在文件users_info.ini中存储用户信息。
  * 格式为：
- * 【序号】【账号类别】【用户名】【账号】【密码】
- * eg.00001,2,Alice*******,18288888888,123456
- *    00002,1,Bob*********,18222221111,123456
+ *
  * 用户名处使用‘*’占位.
  * users_info初始存在一个用户Alice
  * ****************************************/
@@ -31,38 +28,32 @@ void Users:: setPasswrod(QString p)
     password=p;
 }
 
+void Users::setType(int n)
+{
+    accountType=n;
+}
+
 int Users::search()
 {
     return 0;
 }
 void Users::saveFile()
 {
-    // 打开 users_info.txt 文件（读取模式）
-    QFile inputFile("users_info.txt");
-    if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug() << "无法打开文件 users_info.txt";
-        return;
-    }
+    QSettings infoWrite=QSettings("users_info.ini",QSettings::IniFormat);
+    // 获取当前总用户数
+    int totalUsers = infoWrite.value("TotalUsers", 0).toInt();
+    int currentID = totalUsers + 1;
+    while(infoWrite.childGroups().contains(QString("User%1").arg(currentID))){
+        currentID++;
+    } //遍历获得下一个加入
+    QString groupName = QString("User%1").arg(currentID);
+    // 写入数据
+    infoWrite.beginGroup(groupName);
+    infoWrite.setValue("accountType", accountType);
+    infoWrite.setValue("name", name);
+    infoWrite.setValue("account", account);
+    infoWrite.setValue("password", password);
+    infoWrite.setValue("TotalUsers",currentID);
+    infoWrite.endGroup();
 
-    QTextStream in(&inputFile);
-    QString firstLine = in.readLine(); // 读取第一行
-    inputFile.close();
-
-    if (firstLine.isEmpty()) {
-        qDebug() << "users_info.txt 文件为空或第一行为空";
-        return;
-    }
-
-    // 将第一行内容写入 test_info.txt 文件
-    QFile outputFile("test_info.txt");
-    if (!outputFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        qDebug() << "无法打开文件 test_info.txt";
-        return;
-    }
-
-    QTextStream out(&outputFile);
-    out << firstLine; // 写入内容
-    outputFile.close();
-
-    qDebug() << "已将第一行写入 test_info.txt";
 }
