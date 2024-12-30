@@ -49,7 +49,7 @@ class Users
 
     void setPasswrod(QString p);
 
-    bool search();
+    int search();//登录时使用
 
     void saveFile();
 
@@ -62,6 +62,8 @@ class Client:public Users
 
     Dish ShopCart[100];//购物车
 
+    void addShopCart();//加入购物车
+
 
 };
 
@@ -69,6 +71,7 @@ class Business:public Users
 {public:
     Business();
     Dish dishlist[100];
+
 };
 
 class Manager:public Users

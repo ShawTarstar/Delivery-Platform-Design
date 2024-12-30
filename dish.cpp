@@ -6,7 +6,8 @@ QString sourceFileName ="dish_data.txt";
 Dish::Dish(){}
 void Dish::setDish()
 {
-
+//读取文本框
+    saveDish();
 }
 void Dish::deleteDish()
 {
