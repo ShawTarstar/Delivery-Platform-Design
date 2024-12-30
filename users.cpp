@@ -94,16 +94,17 @@ void Users::saveFile()
     // 获取当前总用户数
     int totalUsers = infoWrite.value("TotalUsers", 0).toInt();
     int currentID = totalUsers + 1;
+    infoWrite.setValue("TotalUsers",currentID-1);
     while(infoWrite.childGroups().contains(QString("User%1").arg(currentID))){
         currentID++;
     } //遍历获得下一个加入
     QString groupName = QString("User%1").arg(currentID);
     // 写入数据
+    infoWrite.setValue("TotalUsers",currentID);
     infoWrite.beginGroup(groupName);
     infoWrite.setValue("accountType", accountType);
     infoWrite.setValue("name", name);
     infoWrite.setValue("account", account);
     infoWrite.setValue("password", password);
-    infoWrite.setValue("TotalUsers",currentID);
     infoWrite.endGroup();
 }
