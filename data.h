@@ -15,7 +15,7 @@ class Dish
 {
 public:
     QString name;
-    int amount;//菜品数量
+    int amount;//购物车中的菜品数量，初始值由程序设定，用户无需处理
     double price;
     QString pixlocation;//图片地址
 
@@ -24,6 +24,7 @@ public:
     void setDish();//新增dish；修改dish信息（即使只需修改部分信息，也需要全部参数）
     void deleteDish();//使用菜品名删除菜品
     void saveDish();
+    void showDish();
 };
 
 
@@ -56,7 +57,7 @@ class Client:public Users
     Dish ShopCart[100];//购物车
 
     void addShopCart();//加入购物车
-
+    void deleteShopCart();//删除购物车商品
 
 };
 

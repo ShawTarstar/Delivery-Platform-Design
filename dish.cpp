@@ -8,10 +8,8 @@ void Dish::setDish()
 {
 //读取文本框
     QString temp1,temp4;
-    int temp2;
     double temp3;
     name=temp1;
-    amount=temp2;
     price=temp3;
     pixlocation=temp4;
 
