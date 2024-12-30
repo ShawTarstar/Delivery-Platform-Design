@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include<QFile>
+#include<QSettings>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,8 +20,8 @@ public:
     int num;//菜品序号
 
     Dish();
-    void setDish();
-    void deleteDish();
+    void setDish();//新增dish；修改dish信息（即使只需修改部分信息，也需要全部参数）
+    void deleteDish();//使用菜品名删除菜品
     void saveDish();
 };
 

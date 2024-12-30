@@ -1,7 +1,7 @@
 #include "data.h"
 #include "ui_data.h"
 
-QString sourceFileName="order_data.txt";
+QString order_data="order_data.ini";
 
 Order::Order(){}
 void Order::setOrder()//设置订单信息
@@ -12,7 +12,7 @@ void Order::setOrder()//设置订单信息
 }
 void Order::saveOrder()
 {
-    QFile file(sourceFileName);
+    QFile file(order_data);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         qDebug() << "无法打开文件进行写入";
         return;
