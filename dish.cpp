@@ -8,13 +8,13 @@ void Dish::setDish()
 {
 //读取文本框
     QString temp1,temp4;
-    int temp2,temp5;
+    int temp2;
     double temp3;
     name=temp1;
     amount=temp2;
     price=temp3;
     pixlocation=temp4;
-    num=temp5;
+
 
     saveDish();
 }
@@ -27,11 +27,11 @@ void Dish::deleteDish()
         dish_settings.beginGroup(name);
         dish_settings.remove("");
         dish_settings.endGroup();
-        qDebug() << "Dish with number" << num << "deleted successfully!";
+        qDebug() << "Dish with name" << name << "deleted successfully!";
     }
     else
     {
-        qDebug() << "Dish with number" << num << "not found in dish_data.ini.";
+        qDebug() << "Dish with name" << name << "not found in dish_data.ini.";
     }
 
 }
@@ -47,7 +47,6 @@ void Dish::saveDish()
     dish_settings.setValue("amount",amount);
     dish_settings.setValue("price",price);
     dish_settings.setValue("pixlocation",pixlocation);
-    dish_settings.setValue("num",num);
     dish_settings.endGroup();
 
     qDebug() << "Dish saved successfully to dish_data.ini!";

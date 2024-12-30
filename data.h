@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include<QFile>
 #include<QSettings>
+#include<QDateTime>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,7 +18,7 @@ public:
     int amount;//菜品数量
     double price;
     QString pixlocation;//图片地址
-    int num;//菜品序号
+
 
     Dish();
     void setDish();//新增dish；修改dish信息（即使只需修改部分信息，也需要全部参数）
@@ -25,19 +26,7 @@ public:
     void saveDish();
 };
 
-class Order
-{
-public:
-    Dish d[50];
-    int num;//订单序号
-    double sum;//订单总金额
-    QString client_info;//购买人名
-    QString business_info;//商家名
 
-    Order();
-    void setOrder();//设置订单信息
-    void saveOrder();
-};
 class Users
 {public:
     QString name;
@@ -82,6 +71,19 @@ class Manager:public Users
 
 //
 
+class Order
+{
+public:
+    Dish d[50];
+    int num;//订单序号
+    double sum;//订单总金额
+    QString client_info;//购买人名
+    QString business_info;//商家名
+
+    Order();
+    void setOrder(Client &client,Business &business);//设置订单信息
+    void saveOrder();
+};
 class data : public QMainWindow
 {
     Q_OBJECT
