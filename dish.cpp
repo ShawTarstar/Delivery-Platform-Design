@@ -4,18 +4,26 @@
 QString dish_data ="dish_data.ini";
 
 Dish::Dish(){}
+
+    //[luosifen]
+    // name=luosifen
+    // amount=0
+    // price=12.5
+    // pixlocation=12345
+
 void Dish::setDish()
 {
 //读取文本框
-    QString temp1,temp4;
-    double temp3;
+    QString temp1="luosifen",temp4="12345";
+    double temp3=12.5;
     name=temp1;
     price=temp3;
     pixlocation=temp4;
 
-
-    saveDish();
+    //saveDish();
 }
+
+
 void Dish::deleteDish()
 {
     QSettings dish_settings(dish_data,QSettings::IniFormat);
