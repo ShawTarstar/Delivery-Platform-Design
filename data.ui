@@ -14,39 +14,6 @@
    <string>data</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>270</y>
-      <width>120</width>
-      <height>85</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_3">
-     <item>
-      <widget class="QRadioButton" name="client_Button">
-       <property name="text">
-        <string>顾客</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="sever_Button">
-       <property name="text">
-        <string>商家</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="admin_Button">
-       <property name="text">
-        <string>管理员</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QPushButton" name="confirm_Button">
     <property name="geometry">
      <rect>
@@ -144,6 +111,9 @@
      </item>
      <item>
       <widget class="QLineEdit" name="user_password_lineEdit">
+       <property name="echoMode">
+        <enum>QLineEdit::EchoMode::Password</enum>
+       </property>
        <property name="placeholderText">
         <string>请输入密码…</string>
        </property>

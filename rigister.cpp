@@ -1,8 +1,10 @@
 #include "rigister.h"
 #include "ui_rigister.h"
+#include "data.h"
 #include <QString>
 #include <QMessageBox>
-
+//韦海莹
+int flag=0;
 rigister::rigister(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::rigister)
@@ -54,9 +56,30 @@ void rigister::on_confirm_Button_clicked()
         return;
     }
 
-    if(!1){    ///此处填写信号
+    if(ui->client_Button->isChecked()){
+        ////跳转到顾客界面
+        flag=1;
+    }
+    else if(ui->sever_Button->isChecked()){
+        ////跳转到商家界面
+        flag=2;
+    }else{
+        QMessageBox::information(this,"错误","请选择身份!");
+        return;
+    }
+
+    if(!0){    //此处填写验证码信号
         QMessageBox::information(this,"提示","注册成功!");
         this->close();
+        Users u;
+        u.setAcoount(tele);
+        u.setName(name);
+        u.setPasswrod(password);
+        if(flag==1){
+            u.setType(1);
+        }
+        else u.setType(2);
+        u.saveFile();
     }
 
 }

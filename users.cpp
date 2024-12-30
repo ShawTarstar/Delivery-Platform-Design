@@ -40,6 +40,22 @@ void Users::setType(int n)
 {
     accountType=n;
 }
+QString Users::getAccount(void)
+{
+    return account;
+}
+QString Users::getName(void)
+{
+    return name;
+}
+QString Users::getPassword(void)
+{
+    return password;
+}
+int Users::getType(void)
+{
+    return accountType;
+}
 /******************************************
  * 函数search
  * 使用类中的数据对文件users_info中的数据进行搜索。

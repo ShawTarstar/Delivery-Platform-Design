@@ -6,6 +6,7 @@
 #include<QSettings>
 #include<QDateTime>
 #include"message_login.h"
+#include"rigister.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -30,19 +31,22 @@ public:
 
 
 class Users
-{public:
+{private:
     QString name;
     QString account;
     QString password;
-    int accountType; //新增：账号类型
+    int accountType; //1:顾客 2:商家 3:管理员
+public:
     Users();
     void setName(QString s);
-
     void setAcoount(QString a);
-
     void setPasswrod(QString p);
-
     void setType(int n);
+    QString getName(void);
+    QString getAccount(void);
+    QString getPassword(void);
+    int getType(void);
+
 
     int search();//登录时使用
 

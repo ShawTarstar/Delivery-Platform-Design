@@ -3,6 +3,7 @@
 #include <QRadioButton>
 #include <QMessageBox>
 #include "message_login.h"
+#include "rigister.h"
 
 data::data(QWidget *parent)
     : QMainWindow(parent)
@@ -17,11 +18,14 @@ data::~data()
 }
 void data::on_message_Button_clicked()
 {
-    message_login* mess_log=new message_login(this);
+    message_login* mess_log=new message_login;
     mess_log->show();
 }
-
-
+void data::on_register_Button_clicked()
+{
+    rigister* reg=new rigister;
+    reg->show();
+}
 
 void data::on_confirm_Button_clicked()
 {
@@ -37,21 +41,6 @@ void data::on_confirm_Button_clicked()
         return;
     }
 
-    if(ui->admin_Button->isChecked()){
-        ////跳转到管理员界面
 
-
-    }else if(ui->client_Button->isChecked()){
-        ////跳转到顾客界面
-
-
-    }
-    else if(ui->sever_Button->isChecked()){
-        ////跳转到商家界面
-
-
-    }else{
-        QMessageBox::information(this,"错误","请选择身份!");
-    }
 }
 

@@ -2,6 +2,7 @@
 #define RIGISTER_H
 
 #include <QWidget>
+#include "data.h"
 
 
 namespace Ui {
