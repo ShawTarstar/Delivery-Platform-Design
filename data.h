@@ -32,12 +32,15 @@ class Users
     QString name;
     QString account;
     QString password;
+    int accountType; //新增：账号类型
     Users();
     void setName(QString s);
 
     void setAcoount(QString a);
 
     void setPasswrod(QString p);
+
+    void setType(int n);
 
     int search();//登录时使用
 
