@@ -4,7 +4,7 @@
 #include <QSettings>
 using namespace std;
 /******************************************
- * 用户函数页cpp
+ * 用户函数页cpp 邵倍溪
  * 将用户信息存在users_info.ini文件中，格式为
  * totalUsers=2
  * [User1]

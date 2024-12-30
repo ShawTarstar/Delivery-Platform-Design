@@ -5,6 +5,7 @@
 #include<QFile>
 #include<QSettings>
 #include<QDateTime>
+#include"message_login.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -95,6 +96,13 @@ class data : public QMainWindow
 public:
     data(QWidget *parent = nullptr);
     ~data();
+
+private slots:
+    void on_register_Button_clicked();
+
+    void on_confirm_Button_clicked();
+
+    void on_message_Button_clicked();
 
 private:
     Ui::data *ui;
