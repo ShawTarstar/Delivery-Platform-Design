@@ -14,8 +14,8 @@ Order::Order()
 void Order::setOrder(Client &client,Business &business)//设置订单信息
 {//遍历购物车，如果勾选了就加入order.d[]
     double sum=0;//初始化订单总金额
-    client_info=client.name;
-    business_info=business.name;
+    client_info=client.getName();
+    business_info=business.getName();
 
     int dishIndex=0;
 

@@ -12,17 +12,23 @@ SOURCES += \
     1_main.cpp \
     dish.cpp \
     data.cpp \
+    message_login.cpp \
     order.cpp \
+    rigister.cpp \
     users.cpp \
     users_business.cpp \
     users_client.cpp \
     users_manager.cpp
 
 HEADERS += \
-    data.h
+    data.h \
+    message_login.h \
+    rigister.h
 
 FORMS += \
-    data.ui
+    data.ui \
+    message_login.ui \
+    rigister.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
