@@ -2,7 +2,6 @@
 #define CLIENT_MAINP_H
 
 #include <QWidget>
-
 namespace Ui {
 class Client_mainp;
 }
