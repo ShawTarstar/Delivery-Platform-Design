@@ -1,4 +1,3 @@
-#include "rigister.h"
 #include "ui_rigister.h"
 #include "data.h"
 #include <QString>

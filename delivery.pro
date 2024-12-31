@@ -10,25 +10,31 @@ CONFIG += c++17
 
 SOURCES += \
     1_main.cpp \
+    client_mainp.cpp \
     dish.cpp \
     data.cpp \
     message_login.cpp \
     order.cpp \
     rigister.cpp \
+    sever_mainp.cpp \
     users.cpp \
     users_business.cpp \
     users_client.cpp \
     users_manager.cpp
 
 HEADERS += \
+    client_mainp.h \
     data.h \
     message_login.h \
-    rigister.h
+    rigister.h \
+    sever_mainp.h
 
 FORMS += \
+    client_mainp.ui \
     data.ui \
     message_login.ui \
-    rigister.ui
+    rigister.ui \
+    sever_mainp.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
