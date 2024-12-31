@@ -6,17 +6,10 @@
 #include<QSettings>
 #include<QDateTime>
 #include<QDir>
-<<<<<<< HEAD
 #include"message_login.h"
 #include"rigister.h"
 #include"sever_mainp.h"
-//test
-=======
 
-class Client;
-class Business;
-
->>>>>>> cdf76893cab595846b9108a8a24013f20ff156bd
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class data;
@@ -24,6 +17,7 @@ class data;
 QT_END_NAMESPACE
 class Client;
 class Order;
+class Business;
 class Dish
 {
 public:
@@ -58,8 +52,6 @@ public:
     void saveFile();
 
 };
-<<<<<<< HEAD
-=======
 class Order
 {
 public:
@@ -87,7 +79,6 @@ class Client:public Users
 
 };
 
->>>>>>> cdf76893cab595846b9108a8a24013f20ff156bd
 class Business:public Users
 {public:
     Business();
@@ -102,40 +93,7 @@ class Manager:public Users
 {public:
     Manager();
 };
-<<<<<<< HEAD
-class Order
-{
-public:
-    Dish d[50];
-    int num;//订单序号
-    double sum;//订单总金额
-    QString client_info;//购买人名
-    QString business_info;//商家名
 
-    Order();
-    void setOrder(Client &client,Business &business);//设置订单信息
-    void saveOrder();
-};
-class Client:public Users
-{public:
-    Client();
-    double discount[100];//优惠券
-
-    Dish ShopCart[100];//购物车
-    Order orderList[100];
-    void addShopCart();//加入购物车
-    void deleteShopCart();//删除购物车商品
-    void creatOrder();
-
-};
-
-
-=======
-
-//
-
-
->>>>>>> cdf76893cab595846b9108a8a24013f20ff156bd
 class data : public QMainWindow
 {
     Q_OBJECT

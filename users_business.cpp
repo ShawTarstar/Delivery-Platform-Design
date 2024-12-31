@@ -4,11 +4,7 @@
 QString busi_data="business_dish_data.ini";
 
 Business::Business(){
-<<<<<<< HEAD
     setName("A");
-=======
-
->>>>>>> cdf76893cab595846b9108a8a24013f20ff156bd
 }
 
 void Business::addDishList()
