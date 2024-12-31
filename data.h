@@ -8,6 +8,7 @@
 #include<QDir>
 #include"message_login.h"
 #include"rigister.h"
+#include"sever_mainp.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -45,8 +46,6 @@ public:
     QString getAccount(void);
     QString getPassword(void);
     int getType(void);
-
-
     int search();//登录时使用
 
     void saveFile();
@@ -59,6 +58,7 @@ class Business:public Users
     void addDishList();
     void deleteDishList();
     void modifyDishList();
+
 };
 
 class Manager:public Users
