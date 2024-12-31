@@ -6,10 +6,8 @@
 #include<QSettings>
 #include<QDateTime>
 #include<QDir>
-
 #include"message_login.h"
 #include"rigister.h"
-#include"sever_mainp.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -18,7 +16,6 @@ class data;
 QT_END_NAMESPACE
 class Client;
 class Order;
-class Business;
 class Dish
 {
 public:
@@ -29,7 +26,6 @@ public:
 
 
     Dish();
-
 };
 
 
@@ -49,12 +45,13 @@ public:
     QString getAccount(void);
     QString getPassword(void);
     int getType(void);
+
+
     int search();//登录时使用
 
     void saveFile();
 
 };
-
 class Business:public Users
 {public:
     Business();
@@ -68,8 +65,6 @@ class Manager:public Users
 {public:
     Manager();
 };
-
-
 class Order
 {
 public:
@@ -81,26 +76,20 @@ public:
 
     Order();
     void setOrder(Client &client,Business &business);//设置订单信息
-    void saveOrder(Client &client);
+    void saveOrder();
 };
-
 class Client:public Users
 {public:
-    //Client();
+    Client();
     double discount[100];//优惠券
 
-    Order orderList[100];
-
     Dish ShopCart[100];//购物车
-
-
+    Order orderList[100];
     void addShopCart();//加入购物车
     void deleteShopCart();//删除购物车商品
-    void createOrder();
+    void creatOrder();
 
 };
-
-
 
 
 class data : public QMainWindow

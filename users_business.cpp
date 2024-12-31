@@ -13,7 +13,7 @@ bob\luosifen\pixlocation=12345
 QString busi_data="business_dish_data.ini";
 
 Business::Business(){
-
+    setName("A");
 }
 
 void Business::addDishList()
