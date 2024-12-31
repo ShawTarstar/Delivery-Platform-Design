@@ -40,15 +40,16 @@ void Order::setOrder(Client &client,Business &business)//设置订单信息
         }
     }
     qDebug() << "Order set successfully! Total dishes:" << dishIndex << "Total amount:" << sum;
-    saveOrder();
+    saveOrder(client);
 }
 
 
-void Order::saveOrder()
+void Order::saveOrder(Client &client)
 {
     QSettings order_settings(order_data,QSettings::IniFormat);
+    QString title=QString("%1/%2").arg(client.getName()).arg(num);
 
-    order_settings.beginGroup(QString::number(num));
+    order_settings.beginGroup(title);
     order_settings.setValue("num",num);
     order_settings.setValue("sum",sum);
     order_settings.setValue("client_info",client_info);
