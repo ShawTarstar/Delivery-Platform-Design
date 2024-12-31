@@ -4,14 +4,14 @@
 QString busi_data="business_dish_data.ini";
 
 Business::Business(){
-    name="A";
+
 }
 
 void Business::addDishList()
 {
     QSettings busi_settings(busi_data,QSettings::IniFormat);
 
-    busi_settings.beginGroup(name);
+    busi_settings.beginGroup(getName());
 
     for(int i=0;i<100;i++)
     {
@@ -23,7 +23,7 @@ void Business::addDishList()
         dishlist[i].price=temp3;
         dishlist[i].pixlocation=temp4;
 
-        QString groupname=QString("%1/%2").arg(name).arg(dishlist[i].name);
+        QString groupname=QString("%1/%2").arg(getName()).arg(dishlist[i].name);
         busi_settings.beginGroup(groupname);
         busi_settings.setValue("name",dishlist[i].name);
         busi_settings.setValue("price",dishlist[i].price);
@@ -49,9 +49,9 @@ void Business::deleteDishList()
 
             //删除ini文件中的对应项
              QSettings busi_settings(busi_data,QSettings::IniFormat);
-            busi_settings.beginGroup(name);
+            busi_settings.beginGroup(getName());
 
-            QString remove_dishName=QString("%1/%2").arg(name).arg(dishName);
+            QString remove_dishName=QString("%1/%2").arg(getName()).arg(dishName);
             busi_settings.remove(remove_dishName);
 
             qDebug()<<"Dish deleted: "<<dishName;
@@ -70,7 +70,7 @@ void Business::modifyDishList()
         if(dishlist[i].name==dish.name)
         {
             QSettings settings(busi_data,QSettings::IniFormat);
-            QString keyPrefix=QString("%1/%2").arg(name).arg(dish.name);
+            QString keyPrefix=QString("%1/%2").arg(getName()).arg(dish.name);
 
             settings.setValue(keyPrefix+"/name",dish.name);
             settings.setValue(keyPrefix+ "/price",dish.price);
