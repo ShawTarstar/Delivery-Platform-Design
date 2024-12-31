@@ -19,6 +19,11 @@ using namespace std;
  * password="456789"
  * ****************************************/
 Users::Users(){
+    name="";
+    account=0;
+    password=0;
+    accountType=0;
+
 }
 //调用以保存用户名
 void Users::setName(QString s)

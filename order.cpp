@@ -1,6 +1,19 @@
 #include "data.h"
 #include "ui_data.h"
 
+/*************
+ *[mike]
+1003487984\num=1003487984
+1003487984\sum=1.58e-321
+1003487984\client_info=mike
+1003487984\business_info=
+1003487984\luosifen\name=luosifen
+1003487984\luosifen\amount=1
+1003487984\luosifen\price=12
+1003487984\luosifen\pixlocation=123456
+***********************/
+
+
 QString order_data="order_data.ini";
 
 Order::Order()

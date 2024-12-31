@@ -1,6 +1,15 @@
 #include "data.h"
 #include "ui_data.h"
 
+/*****************
+ * 林桐舟
+[bob]
+bob\luosifen\name=luosifen
+bob\luosifen\price=12.5
+bob\luosifen\pixlocation=12345
+/*****************/
+
+
 QString busi_data="business_dish_data.ini";
 
 Business::Business(){

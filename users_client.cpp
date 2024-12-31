@@ -1,6 +1,15 @@
 #include "data.h"
 #include "ui_data.h"
 
+/****************************
+ * 林桐舟
+[mike]
+mike\luosifenname=luosifen
+mike\luosifenamount=1
+mike\luosifenprice=12
+mike\luosifenpixlocation=123456
+
+/****************************/
 QString ShopCart_data="ShopCart_data.ini";
 
 void Client::addShopCart()
@@ -10,6 +19,10 @@ void Client::addShopCart()
 
     //点击一次+，加入一件该菜品到购物车
     Dish dish;//此处调用该处菜品信息
+    dish.name="luosifen";
+    dish.amount=2;
+    dish.price=12;
+    dish.pixlocation="123456";
 
     //第一遍检查购物车中是否已有该商品，有则直接加数量
     //
@@ -24,7 +37,7 @@ void Client::addShopCart()
             settings.setValue(title+"amount",ShopCart[i].amount);
             settings.setValue(title+"price",ShopCart[i].price);
             settings.setValue(title+"pixlocation",ShopCart[i].pixlocation);
-            settings.sync();
+            settings.endGroup();
 
             qDebug()<<"sucessfully set "<<ShopCart[i].name;
 
@@ -46,7 +59,7 @@ void Client::addShopCart()
             settings.setValue(title+"amount",ShopCart[i].amount);
             settings.setValue(title+"price",ShopCart[i].price);
             settings.setValue(title+"pixlocation",ShopCart[i].pixlocation);
-            settings.sync();
+            settings.endGroup();
 
             qDebug()<<"sucessfully set "<<ShopCart[i].name;
             return;

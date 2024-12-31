@@ -86,7 +86,7 @@ public:
 
 class Client:public Users
 {public:
-    Client();
+    //Client();
     double discount[100];//优惠券
     Dish ShopCart[100];//购物车
     Order orderList[100];
