@@ -9,7 +9,7 @@
 #include"message_login.h"
 #include"rigister.h"
 #include"sever_mainp.h"
-
+//test
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class data;
