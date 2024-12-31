@@ -101,5 +101,8 @@ void Client::deleteShopCart()
 
 void Client::createOrder()
 {
+    Order order_temp;
+    Business business_temp;//此处获取该店铺商家
+    order_temp.setOrder(*this,business_temp);
 
 }
