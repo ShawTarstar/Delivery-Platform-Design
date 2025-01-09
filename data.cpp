@@ -50,9 +50,9 @@ void data::on_confirm_Button_clicked()
     }
     else if(flag==1){
         QMessageBox::information(this,"成功","欢迎顾客进入系统");
-        Client_mainp* c_m=new Client_mainp;
+        client_mainp* c_m=new client_mainp;
         c_m->show();
-        this->close();
+        //this->close();
     }
     else if(flag==2){
         QMessageBox::information(this,"成功","欢迎商家进入系统");

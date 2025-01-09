@@ -1,49 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Client_mainp</class>
- <widget class="QWidget" name="Client_mainp">
+ <class>client_mainp</class>
+ <widget class="QWidget" name="client_mainp">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1000</width>
+    <height>680</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1000</width>
+    <height>680</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1000</width>
+    <height>16777215</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="shopcar_Button">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>360</y>
-     <width>171</width>
-     <height>141</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>购物车</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="Client_id_label">
-   <property name="geometry">
-    <rect>
-     <x>630</x>
-     <y>20</y>
-     <width>121</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;100000&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="foodchoice_Button">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>360</y>
+     <x>180</x>
+     <y>390</y>
      <width>171</width>
      <height>151</height>
     </rect>
@@ -52,13 +38,26 @@
     <string>菜品选择</string>
    </property>
   </widget>
+  <widget class="QLabel" name="Client_id_label">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>50</y>
+     <width>121</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;100000&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>130</y>
+     <x>420</x>
+     <y>140</y>
      <width>291</width>
-     <height>101</height>
+     <height>81</height>
     </rect>
    </property>
    <property name="minimumSize">
@@ -92,8 +91,8 @@
   <widget class="QPushButton" name="quitButton">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
+     <x>30</x>
+     <y>30</y>
      <width>131</width>
      <height>51</height>
     </rect>
@@ -108,11 +107,24 @@
     <string>退出</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="shopcar_Button">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>390</y>
+     <width>171</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>购物车</string>
+   </property>
+  </widget>
   <widget class="QPushButton" name="ordermng_Button">
    <property name="geometry">
     <rect>
-     <x>570</x>
-     <y>360</y>
+     <x>700</x>
+     <y>390</y>
      <width>171</width>
      <height>141</height>
     </rect>
@@ -124,10 +136,10 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>540</x>
-     <y>20</y>
+     <x>730</x>
+     <y>50</y>
      <width>71</width>
-     <height>31</height>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
