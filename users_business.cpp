@@ -1,5 +1,6 @@
 #include "data.h"
 #include "ui_data.h"
+#include <QSettings>
 
 /*****************
  * 林桐舟
@@ -91,9 +92,23 @@ void Business::modifyDishList(QString name,QString pixlocation,double price)
 bool Business::findDishList(QString name,QString &pixlocation,double &price)
 {
     int flag=0;
-    QSettings settings(busi_data,QSettings::IniFormat);
-    QString temp=QString("%1/%2").arg(getName()).arg(name);
+    QString severAccount;
+    QString filepath="user_temp.ini";
+    QSettings settings(filepath,QSettings::IniFormat);
+    QStringList groups = settings.childGroups();
+    if (!groups.isEmpty()) {
+        // 进入第一个节
+        QString firstSection = groups.first();
+        settings.beginGroup(firstSection);
+        severAccount=settings.value("name").toString();
 
+        settings.endGroup(); // 结束访问组
+    } else {
+        qDebug() << "INI 文件中没有任何节。";
+    }
+    QString temp=QString("%1/%2").arg(severAccount).arg(name);
+    //商家名（getname()）是调用该函数的商家，name是菜品名
+    //可以将getname处更改成要查询的商家名，name处更改成菜品名
     QStringList allKeys = settings.allKeys();
     for (const QString &key : allKeys) {
         if (key.contains(temp)) {

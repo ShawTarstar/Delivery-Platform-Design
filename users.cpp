@@ -66,7 +66,7 @@ int Users::getType(void)
  * 使用类中的数据对文件users_info中的数据进行搜索。
  * 使用前务必设置好类中数据account和password。
  ******************************************/
-int Users::search()
+int Users::search(QString &name)
 {
     //遍历用户组，如果找到与account和password匹配的数据，则返回账户类型（1,2,3）
     //如果找不到匹配数据，返回0
@@ -81,6 +81,7 @@ int Users::search()
 
         if (currentAccount == account && currentPassword == password) {
             int type = infoRead.value("accountType").toInt();
+            name=infoRead.value("name").toString();
             infoRead.endGroup();
             return type;
         }
