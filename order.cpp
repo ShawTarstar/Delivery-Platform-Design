@@ -15,6 +15,8 @@
 
 
 QString order_data="order_data.ini";
+QString filepath="user_temp.ini";
+QSettings settings(filepath,QSettings::IniFormat);
 
 Order::Order()
 {
@@ -59,10 +61,22 @@ void Order::setOrder(Client &client,Business &business)//设置订单信息
 }
 
 
-void Order::saveOrder(Client &client)
+void Order::saveOrder(void)
 {
+    QString severAccount;
+    QStringList groups = settings.childGroups();
+    if (!groups.isEmpty()) {
+        // 进入第一个节
+        QString firstSection = groups.first();
+        settings.beginGroup(firstSection);
+        severAccount=settings.value("name").toString();
+
+        settings.endGroup(); // 结束访问组
+    } else {
+        qDebug() << "INI 文件中没有任何节。";
+    }
     QSettings order_settings(order_data,QSettings::IniFormat);
-    QString title=QString("%1/%2").arg(client.getName()).arg(num);
+    QString title=QString("%1/%2").arg(severAccount).arg(num);
 
     order_settings.beginGroup(title);
     order_settings.setValue("num",num);

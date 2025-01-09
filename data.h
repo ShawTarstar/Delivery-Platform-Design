@@ -83,7 +83,7 @@ public:
 
     Order();
     void setOrder(Client &client,Business &business);//设置订单信息
-    void saveOrder(Client &client);
+    void saveOrder(void);
     void findOrderInfo(const QString &businessInfo,QString& num,double& sum);
 };
 
