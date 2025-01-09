@@ -15,6 +15,9 @@ public:
     explicit sever_mainp(QWidget *parent = nullptr);
     ~sever_mainp();
 
+private slots:
+    void on_back_clicked();
+
 private:
     Ui::sever_mainp *ui;
 };

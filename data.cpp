@@ -58,7 +58,7 @@ void data::on_confirm_Button_clicked()
         QMessageBox::information(this,"成功","欢迎商家进入系统");
         sever_mainp* s_m=new sever_mainp;
         s_m->show();
-        this->close();
+        //this->close();
     }
 }
 
