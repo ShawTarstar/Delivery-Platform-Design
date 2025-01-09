@@ -12,3 +12,9 @@ sever_mainp::~sever_mainp()
 {
     delete ui;
 }
+
+void sever_mainp::on_back_clicked()
+{
+    this->close();
+}
+

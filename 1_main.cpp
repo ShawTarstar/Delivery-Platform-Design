@@ -15,6 +15,14 @@ int main(int argc, char *argv[])
     //c.addShopCart();
    // c.createOrder();
 
+    // Client c;
+    // c.setName("mike");
+    // c.addShopCart();
+    // c.createOrder();
+    // Business b;
+    // b.setName("bob");
+    // b.addDishList();
+
 
     return a.exec();
 }

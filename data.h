@@ -19,6 +19,7 @@ QT_END_NAMESPACE
 class Client;
 class Order;
 class Business;
+
 class Dish
 {
 public:
@@ -59,11 +60,10 @@ public:
 class Business:public Users
 {public:
     Business();
-    Dish dishlist[100];
     void addDishList(QString name,QString pixlocation,double price);
     void deleteDishList(QString);
     void modifyDishList(QString name,QString pixlocation,double price);
-    void findDishList(QString name,QString &pixlocation,double &price,int &amount);
+    bool findDishList(QString name,QString &pixlocation,double &price);
 };
 
 class Manager:public Users
@@ -89,16 +89,11 @@ public:
 class Client:public Users
 {public:
     //Client();
-    double discount[100];//优惠券
-
-    Order orderList[100];
-
-    Dish ShopCart[100];//购物车
-
 
     void addShopCart(QString name,QString pixlocation,double price,int amount);//加入购物车
-    void deleteShopCart();//删除购物车商品
-    void createOrder();
+    void deleteShopCart(QString name);//删除购物车商品
+    void createOrder(Business business_temp);
+    bool findShopCart(QString name,QString& pixlocation,double& price,int& amount);
 
 };
 

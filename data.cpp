@@ -60,7 +60,7 @@ void data::on_confirm_Button_clicked()
         //Users::currentAccount=id;
         sever_mainp* s_m=new sever_mainp;
         s_m->show();
-        this->close();
+        //this->close();
     }
 }
 

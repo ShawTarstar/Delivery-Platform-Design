@@ -23,7 +23,6 @@ Order::Order()
     QString num = currentTime.toString("yyyyMMddhhmmss"); // 例如：20241230123045
 }
 
-
 void Order::setOrder(Client &client,Business &business)//设置订单信息
 {//遍历购物车，如果勾选了就加入order.d[]
     double sum=0;//初始化订单总金额
@@ -34,7 +33,10 @@ void Order::setOrder(Client &client,Business &business)//设置订单信息
 
     for(int i=0;i<100;i++)
     {
-        Dish &dish_temp=client.ShopCart[i];
+        Dish dish_temp;
+        //读入数据到dish_temp
+        client.findShopCart(dish_temp.name,dish_temp.pixlocation,dish_temp.price,dish_temp.amount);
+
         bool isSelected=1;//此处连接购物车的checkbox信号
 
         if(!dish_temp.name.isEmpty()&&isSelected)

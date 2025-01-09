@@ -23,30 +23,16 @@ Business::Business(){
 void Business::addDishList(QString name,QString pixlocation,double price)
 {
     QSettings busi_settings(busi_data,QSettings::IniFormat);
-
     busi_settings.beginGroup(getName());
+    QString groupname=QString("%1/%2").arg(getName()).arg(name);
+    busi_settings.beginGroup(groupname);
+    busi_settings.setValue("name",name);
+    busi_settings.setValue("price",price);
+    busi_settings.setValue("pixlocation",pixlocation);
+    busi_settings.endGroup();
 
-    for(int i=0;i<100;i++)
-    {
-        if(dishlist[i].name.isEmpty())//存在空位，存入数据
-        {
-        //QString temp1="luosifen",temp4="12345";
-        //double temp3=12.5;
-        dishlist[i].name=name;
-        dishlist[i].price=price;
-        dishlist[i].pixlocation=pixlocation;
+    qDebug() << "Dish saved successfully to business_data.ini!";
 
-        QString groupname=QString("%1/%2").arg(getName()).arg(dishlist[i].name);
-        busi_settings.beginGroup(groupname);
-        busi_settings.setValue("name",dishlist[i].name);
-        busi_settings.setValue("price",dishlist[i].price);
-        busi_settings.setValue("pixlocation",dishlist[i].pixlocation);
-        busi_settings.endGroup();
-
-        qDebug() << "Dish saved successfully to business_data.ini!";
-        break;
-        }
-    }
 }
 /***********************
  * 调用时，按照如下规则调用：
@@ -57,27 +43,25 @@ void Business::addDishList(QString name,QString pixlocation,double price)
 void Business::deleteDishList(QString dishName)
 {
     //QString dishName="luosifen";//此处接入需要删除的菜品名
+    QSettings busi_settings(busi_data,QSettings::IniFormat);
+    busi_settings.beginGroup(getName());
+    double price;
+    QString pix;
 
-    for(int i=0;i<100;i++)
+    if(findDishList(dishName,pix,price)==1)
     {
-        if(dishlist[i].name==dishName)
-        {
-            //清空内存中的dish信息
-            dishlist[i]=Dish();
+        QString remove_dishName=QString("%1/%2").arg(getName()).arg(dishName);
+        busi_settings.remove(remove_dishName);
 
-            //删除ini文件中的对应项
-             QSettings busi_settings(busi_data,QSettings::IniFormat);
-            busi_settings.beginGroup(getName());
-
-            QString remove_dishName=QString("%1/%2").arg(getName()).arg(dishName);
-            busi_settings.remove(remove_dishName);
-
-            qDebug()<<"Dish deleted: "<<dishName;
-            return;
-        }
+        qDebug()<<"Dish deleted: "<<dishName;
+        return;
+    }
+    else
+    {
+        qDebug()<<"not found";
+        return;
     }
 
-    qDebug()<<"not found";
 }
 /***********************
  * 调用时，按照如下规则调用：
@@ -86,44 +70,50 @@ void Business::deleteDishList(QString dishName)
  * *********************/
 void Business::modifyDishList(QString name,QString pixlocation,double price)
 {
-    Dish dish;
-    dish.name=name;
-    dish.price=price;
-    dish.pixlocation=pixlocation;
-    for(int i=0;i<100;i++)
+    if(findDishList(name,pixlocation,price)==1)
     {
-        if(dishlist[i].name==dish.name)
-        {
-            QSettings settings(busi_data,QSettings::IniFormat);
-            QString keyPrefix=QString("%1/%2").arg(getName()).arg(dish.name);
+        QSettings settings(busi_data,QSettings::IniFormat);
+        QString keyPrefix=QString("%1/%2").arg(getName()).arg(name);
 
-            settings.setValue(keyPrefix+"/name",dish.name);
-            settings.setValue(keyPrefix+ "/price",dish.price);
-            settings.setValue(keyPrefix+"/pixlocation",dish.pixlocation);
-            settings.sync();
+        settings.setValue(keyPrefix+"/name",name);
+        settings.setValue(keyPrefix+ "/price",price);
+        settings.setValue(keyPrefix+"/pixlocation",pixlocation);
+        settings.sync();
 
-            qDebug()<<"dish modify:"<<dish.name;
-            return;
-        }
+        qDebug()<<"dish modify:"<<name;
+        return;
     }
+
 
     qDebug()<<"not found";
 }
 
-void Business::findDishList(QString name,QString &pixlocation,double &price,int &amount)
+bool Business::findDishList(QString name,QString &pixlocation,double &price)
 {
-    bool flag=0;
-    for(int i=0;i<100;i++)
-    {
-        if(dishlist[i].name==name)
-        {
-            amount=dishlist[i].amount;
-            price=dishlist[i].price;
-            pixlocation=dishlist[i].pixlocation;
-            flag=1;
-            return;
+    int flag=0;
+    QSettings settings(busi_data,QSettings::IniFormat);
+    QString temp=QString("%1/%2").arg(getName()).arg(name);
+
+    QStringList allKeys = settings.allKeys();
+    for (const QString &key : allKeys) {
+        if (key.contains(temp)) {
+            // 根据键的路径来获取相应的值
+
+            if (key.endsWith("price")) {
+                price = settings.value(key).toDouble();
+                flag+=1;
+                qDebug() << "Dish Price:" << price;
+            }
+            else if (key.endsWith("pixlocation")) {
+                pixlocation = settings.value(key).toString();
+                flag+=1;
+                qDebug() << "Dish Picture Location:" << pixlocation;
+            }
         }
     }
-    if(!flag) qDebug()<<"not found";
-    return;
+    if(flag==2)
+        return true;
+    else
+        return false;
 }
+
