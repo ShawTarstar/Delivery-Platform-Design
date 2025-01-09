@@ -7,7 +7,7 @@
 bob\luosifen\name=luosifen
 bob\luosifen\price=12.5
 bob\luosifen\pixlocation=12345
-/*****************/
+*****************/
 
 
 QString busi_data="business_dish_data.ini";
@@ -15,8 +15,12 @@ QString busi_data="business_dish_data.ini";
 Business::Business(){
     setName("A");
 }
-
-void Business::addDishList()
+/***********************
+ * 调用时，按照如下规则调用：
+ * addDishList("菜名","图片地址","价格")
+ * 功能：为文件添加一个菜品。
+ * *********************/
+void Business::addDishList(QString name,QString pixlocation,double price)
 {
     QSettings busi_settings(busi_data,QSettings::IniFormat);
 
@@ -26,11 +30,11 @@ void Business::addDishList()
     {
         if(dishlist[i].name.isEmpty())//存在空位，存入数据
         {
-        QString temp1="luosifen",temp4="12345";
-        double temp3=12.5;
-        dishlist[i].name=temp1;
-        dishlist[i].price=temp3;
-        dishlist[i].pixlocation=temp4;
+        //QString temp1="luosifen",temp4="12345";
+        //double temp3=12.5;
+        dishlist[i].name=name;
+        dishlist[i].price=price;
+        dishlist[i].pixlocation=pixlocation;
 
         QString groupname=QString("%1/%2").arg(getName()).arg(dishlist[i].name);
         busi_settings.beginGroup(groupname);
@@ -44,10 +48,15 @@ void Business::addDishList()
         }
     }
 }
+/***********************
+ * 调用时，按照如下规则调用：
+ * deleteDishList("菜名")
+ * 功能：通过对菜品名的查找为文件删除一个菜品。
+ * *********************/
 
-void Business::deleteDishList()
+void Business::deleteDishList(QString dishName)
 {
-    QString dishName="luosifen";//此处接入需要删除的菜品名
+    //QString dishName="luosifen";//此处接入需要删除的菜品名
 
     for(int i=0;i<100;i++)
     {
@@ -70,10 +79,17 @@ void Business::deleteDishList()
 
     qDebug()<<"not found";
 }
-
-void Business::modifyDishList()
+/***********************
+ * 调用时，按照如下规则调用：
+ * modifyDishList("菜名","图片地址","价格")
+ * 功能：通过对菜品名的查找和函数中提供的信息对文件中的菜品信息进行更改。
+ * *********************/
+void Business::modifyDishList(QString name,QString pixlocation,double price)
 {
     Dish dish;
+    dish.name=name;
+    dish.price=price;
+    dish.pixlocation=pixlocation;
     for(int i=0;i<100;i++)
     {
         if(dishlist[i].name==dish.name)
@@ -92,4 +108,22 @@ void Business::modifyDishList()
     }
 
     qDebug()<<"not found";
+}
+
+void Business::findDishList(QString name,QString &pixlocation,double &price,int &amount)
+{
+    bool flag=0;
+    for(int i=0;i<100;i++)
+    {
+        if(dishlist[i].name==name)
+        {
+            amount=dishlist[i].amount;
+            price=dishlist[i].price;
+            pixlocation=dishlist[i].pixlocation;
+            flag=1;
+            return;
+        }
+    }
+    if(!flag) qDebug()<<"not found";
+    return;
 }

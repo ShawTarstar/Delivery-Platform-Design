@@ -59,9 +59,10 @@ class Business:public Users
 {public:
     Business();
     Dish dishlist[100];
-    void addDishList();
-    void deleteDishList();
-    void modifyDishList();
+    void addDishList(QString name,QString pixlocation,double price);
+    void deleteDishList(QString);
+    void modifyDishList(QString name,QString pixlocation,double price);
+    void findDishList(QString name,QString &pixlocation,double &price,int &amount);
 };
 
 class Manager:public Users
@@ -94,7 +95,7 @@ class Client:public Users
     Dish ShopCart[100];//购物车
 
 
-    void addShopCart();//加入购物车
+    void addShopCart(QString name,QString pixlocation,double price,int amount);//加入购物车
     void deleteShopCart();//删除购物车商品
     void createOrder();
 

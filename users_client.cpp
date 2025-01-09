@@ -10,19 +10,26 @@ mike\luosifenprice=12
 mike\luosifenpixlocation=123456
 
 /****************************/
+
+/***********************
+ * 调用时，按照如下规则调用：
+ * addShopCart("菜名","图片地址","价格","数量")
+ * 功能：为购物车添加一个菜品。
+ * *********************/
+
 QString ShopCart_data="ShopCart_data.ini";
 
-void Client::addShopCart()
+void Client::addShopCart(QString name,QString pixlocation,double price,int amount)
 {
     QSettings settings(ShopCart_data,QSettings::IniFormat);
     settings.beginGroup(getName());
 
     //点击一次+，加入一件该菜品到购物车
     Dish dish;//此处调用该处菜品信息
-    dish.name="luosifen";
-    dish.amount=2;
-    dish.price=12;
-    dish.pixlocation="123456";
+    dish.name=name;
+    dish.amount=amount;
+    dish.price=price;
+    dish.pixlocation=pixlocation;
 
     //第一遍检查购物车中是否已有该商品，有则直接加数量
     //
