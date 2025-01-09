@@ -13,24 +13,11 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>350</x>
-     <y>50</y>
-     <width>101</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt; font-weight:700;&quot;&gt;商家&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="order_manage">
    <property name="geometry">
     <rect>
-     <x>470</x>
-     <y>190</y>
+     <x>520</x>
+     <y>220</y>
      <width>220</width>
      <height>220</height>
     </rect>
@@ -45,11 +32,30 @@
     <string>订单管理</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="food_manage">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>220</y>
+     <width>220</width>
+     <height>220</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>220</width>
+     <height>220</height>
+    </size>
+   </property>
+   <property name="text">
+    <string>菜品管理</string>
+   </property>
+  </widget>
   <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
+     <x>60</x>
+     <y>40</y>
      <width>121</width>
      <height>51</height>
     </rect>
@@ -70,23 +76,17 @@
     <string>登出</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="food_manage">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>190</y>
-     <width>220</width>
-     <height>220</height>
+     <x>400</x>
+     <y>80</y>
+     <width>101</width>
+     <height>61</height>
     </rect>
    </property>
-   <property name="minimumSize">
-    <size>
-     <width>220</width>
-     <height>220</height>
-    </size>
-   </property>
    <property name="text">
-    <string>菜品管理</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt; font-weight:700;&quot;&gt;商家&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
  </widget>
