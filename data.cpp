@@ -57,14 +57,9 @@ void data::on_confirm_Button_clicked()
     Users u;
     u.setAcoount(id);
     u.setPasswrod(password);
-<<<<<<< HEAD
-
-    int flag=u.search();
-=======
     QString findname="0";
     int flag=u.search(findname);
     u.setName(findname);
->>>>>>> 607358d0f8788a7c5d5e884324ac7fc268ac7169
     if(flag==0){
         QMessageBox::information(this,"错误","账号或密码错误");
     }
