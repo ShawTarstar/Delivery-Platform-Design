@@ -76,7 +76,7 @@ class Order
 {
 public:
     Dish d[50];
-    int num;//订单序号
+    QString num;//订单序号
     double sum;//订单总金额
     QString client_info;//购买人名
     QString business_info;//商家名
@@ -84,6 +84,7 @@ public:
     Order();
     void setOrder(Client &client,Business &business);//设置订单信息
     void saveOrder(Client &client);
+    void findOrderInfo(const QString &businessInfo,QString& num,double& sum);
 };
 
 class Client:public Users

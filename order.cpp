@@ -83,3 +83,31 @@ void Order::saveOrder(Client &client)
     order_settings.endGroup();
     qDebug()<<"order saved succefully!";
 }
+
+/***********************
+ * 调用时，按照如下规则调用：
+ * findOrderInfo(商家名，订单编号，订单总金额)
+ * 功能：遍历查找该商家的所有订单
+ * *********************/
+void Order::findOrderInfo(const QString &businessInfo,QString& num,double& sum)
+{
+    QSettings settings(order_data, QSettings::IniFormat);
+
+    // 遍历所有 section
+    foreach (const QString &group, settings.childGroups()) {
+        settings.beginGroup(group);
+
+        // 遍历所有键
+        foreach (const QString &key, settings.childKeys()) {
+            // 查找 'business_info' 是否有值，若有则继续查找相关信息
+            if (key.contains("business_info") && settings.value(key).toString() == businessInfo)
+            {
+                num= key.split("/")[0];
+                sum=settings.value(num+"/sum").toDouble();
+                qDebug() <<"succefully get orderinfo";
+            }
+        }
+
+        settings.endGroup();
+    }
+}
