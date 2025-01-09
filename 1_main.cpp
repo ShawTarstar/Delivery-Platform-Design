@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     data w;
     w.show();
+
     // Client c;
     // c.setName("mike");
     // c.addShopCart();
@@ -17,6 +18,7 @@ int main(int argc, char *argv[])
     // Business b;
     // b.setName("bob");
     // b.addDishList();
+
 
 
     return a.exec();

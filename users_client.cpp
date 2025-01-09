@@ -4,118 +4,138 @@
 /****************************
  * 林桐舟
 [mike]
-mike\luosifenname=luosifen
-mike\luosifenamount=1
-mike\luosifenprice=12
-mike\luosifenpixlocation=123456
+mike\luosifen\name=luosifen
+mike\luosifen\amount=1
+mike\luosifen\price=12
+mike\luosifen\pixlocation=123456
 
 /****************************/
+
+/***********************
+ * 调用时，按照如下规则调用：
+ * addShopCart("菜名","图片地址","价格","数量")
+ * 功能：为购物车添加一个菜品。
+ * *********************/
+
 QString ShopCart_data="ShopCart_data.ini";
 
-void Client::addShopCart()
+void Client::addShopCart(QString name,QString pixlocation,double price,int amount)
 {
     QSettings settings(ShopCart_data,QSettings::IniFormat);
     settings.beginGroup(getName());
 
-    //点击一次+，加入一件该菜品到购物车
-    Dish dish;//此处调用该处菜品信息
-    dish.name="luosifen";
-    dish.amount=2;
-    dish.price=12;
-    dish.pixlocation="123456";
-
-    //第一遍检查购物车中是否已有该商品，有则直接加数量
-    //
-    for(int i=0;i<100;i++)
+    //检查购物车中是否已有该商品，有则直接加数量
+    if(findShopCart(name,pixlocation,price,amount)==1)
     {
-        if(ShopCart[i].name==dish.name&&!ShopCart[i].name.isEmpty())
-        {
-            ShopCart[i].amount++;
-            QString title=QString("%1/%2").arg(getName()).arg(ShopCart[i].name);
+        amount++;
+        QString title=QString("%1/%2").arg(getName()).arg(name);
 
-            settings.setValue(title+"name",ShopCart[i].name);
-            settings.setValue(title+"amount",ShopCart[i].amount);
-            settings.setValue(title+"price",ShopCart[i].price);
-            settings.setValue(title+"pixlocation",ShopCart[i].pixlocation);
-            settings.endGroup();
+        settings.setValue(title+"/amount",amount);
 
-            qDebug()<<"sucessfully set "<<ShopCart[i].name;
+        qDebug()<<"sucessfully add shopcart's amount "<<name;
 
-            return;
-        }
+        return;
+    }
+    else//否则增加新商品
+    {
+        QString title=QString("%1/%2").arg(getName()).arg(name);
+
+        settings.setValue(title+"/name",name);
+        settings.setValue(title+"/amount",amount);
+        settings.setValue(title+"/price",price);
+        settings.setValue(title+"/pixlocation",pixlocation);
+        settings.endGroup();
+
+        qDebug()<<"sucessfully set new shopcart's item"<<name;
     }
 
-    //第二遍增加新商品
-    for(int i=0;i<100;i++)
-    {
-        if(ShopCart[i].name.isEmpty())
-        {
-            ShopCart[i]=dish;
-            ShopCart[i].amount=1;
-
-            QString title=QString("%1/%2").arg(getName()).arg(ShopCart[i].name);
-
-            settings.setValue(title+"name",ShopCart[i].name);
-            settings.setValue(title+"amount",ShopCart[i].amount);
-            settings.setValue(title+"price",ShopCart[i].price);
-            settings.setValue(title+"pixlocation",ShopCart[i].pixlocation);
-            settings.endGroup();
-
-            qDebug()<<"sucessfully set "<<ShopCart[i].name;
-            return;
-        }
-    }
-
-    qDebug()<<"购物车已满";
 }
 
+/***********************
+ * 调用时，按照如下规则调用：
+ * deleteShopCart("菜名")
+ * 功能：购物车中该菜品数量减一。
+ * *********************/
 
-void Client::deleteShopCart()
+void Client::deleteShopCart(QString name)
 {
     QSettings settings(ShopCart_data,QSettings::IniFormat);
     settings.beginGroup(getName());
+    QString pix;
+    double price;
+    int amount;
 
-    Dish dish;//此处调用该菜品信息
-
-    for(int i=0;i<100;i++)
+    if(findShopCart(name,pix,price,amount)==1)
     {
-        if(ShopCart[i].name==dish.name&&!ShopCart[i].name.isEmpty())
+        if(amount>1)
         {
-            if(ShopCart[i].amount>1)
-            {
-                ShopCart[i].amount--;
-                QString title=QString("%1/%2").arg(getName()).arg(ShopCart[i].name);
+            amount--;
+            QString title=QString("%1/%2/").arg(getName()).arg(name);
 
-                settings.setValue(title+"name",ShopCart[i].name);
-                settings.setValue(title+"amount",ShopCart[i].amount);
-                settings.setValue(title+"price",ShopCart[i].price);
-                settings.setValue(title+"pixlocation",ShopCart[i].pixlocation);
-                settings.sync();
+            settings.setValue(title+"name",name);
+            settings.setValue(title+"amount",amount);
+            settings.setValue(title+"price",price);
+            settings.setValue(title+"pixlocation",pix);
+            settings.sync();
 
-                return;
-            }
-            else//购物车该商品数量为1，再删除一次则需删除购物车中该商品信息
-            {
-                ShopCart[i].name.clear();
+            return;
+        }
+        else//购物车该商品数量为1，再删除一次则需删除购物车中该商品信息
+        {
+            QString title=QString("%1/%2").arg(getName()).arg(name);
 
-                QString title=QString("%1/%2").arg(getName()).arg(ShopCart[i].name);
+            settings.remove(title);
 
-                settings.remove(title);
-
-                qDebug()<<"remove "<<title;
-                return;
-            }
+            qDebug()<<"remove "<<title;
+            return;
         }
     }
 
     qDebug()<<"找不到该商品！";
 }
 
-
-void Client::createOrder()
+/***********************
+ * 调用时，按照如下规则调用：
+ * createOrder(商家对象)
+ * 功能：创建新订单
+ * *********************/
+void Client::createOrder(Business business_temp)
 {
     Order order_temp;
-    Business business_temp;//此处获取该店铺商家
     order_temp.setOrder(*this,business_temp);
 
+}
+
+bool Client::findShopCart(QString name,QString& pixlocation,double& price,int& amount)
+{
+    int flag=0;
+    QSettings settings(ShopCart_data,QSettings::IniFormat);
+    QString temp=QString("%1/%2").arg(getName()).arg(name);
+
+    QStringList allKeys = settings.allKeys();
+    for (const QString &key : allKeys) {
+        if (key.contains(temp)) {
+            // 根据键的路径来获取相应的值
+
+            if (key.endsWith("price")) {
+                price = settings.value(key).toDouble();
+                flag+=1;
+                qDebug() << "Dish Price:" << price;
+            }
+            else if (key.endsWith("pixlocation")) {
+                pixlocation = settings.value(key).toString();
+                flag+=1;
+                qDebug() << "Dish Picture Location:" << pixlocation;
+            }
+            else if (key.endsWith("amount")) {
+                amount = settings.value(key).toInt();
+                flag+=1;
+                qDebug() << "Dish amount:" << amount;
+            }
+        }
+    }
+    if(flag==3)
+        return true;
+    else
+        return false;
 }
