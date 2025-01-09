@@ -15,8 +15,8 @@
 
 
 QString order_data="order_data.ini";
-QString filepath="user_temp.ini";
-QSettings settings(filepath,QSettings::IniFormat);
+QString temppath="user_temp.ini";
+QSettings tempsettings(temppath,QSettings::IniFormat);
 
 Order::Order()
 {
@@ -57,21 +57,21 @@ void Order::setOrder(Client &client,Business &business)//设置订单信息
         }
     }
     qDebug() << "Order set successfully! Total dishes:" << dishIndex << "Total amount:" << sum;
-    saveOrder(client);
+    saveOrder();
 }
 
 
 void Order::saveOrder(void)
 {
     QString severAccount;
-    QStringList groups = settings.childGroups();
+    QStringList groups = tempsettings.childGroups();
     if (!groups.isEmpty()) {
         // 进入第一个节
         QString firstSection = groups.first();
-        settings.beginGroup(firstSection);
-        severAccount=settings.value("name").toString();
+        tempsettings.beginGroup(firstSection);
+        severAccount=tempsettings.value("name").toString();
 
-        settings.endGroup(); // 结束访问组
+        tempsettings.endGroup(); // 结束访问组
     } else {
         qDebug() << "INI 文件中没有任何节。";
     }
