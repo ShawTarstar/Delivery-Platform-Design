@@ -12,6 +12,7 @@ food_show::food_show(QWidget *parent)
 {
     ui->setupUi(this);
 
+
 }
 
 food_show::~food_show()

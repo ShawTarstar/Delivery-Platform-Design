@@ -50,7 +50,7 @@ public:
     QString getAccount(void);
     QString getPassword(void);
     int getType(void);
-    int search();//登录时使用
+    int search(QString &name);//登录时使用
 
     void saveFile();
 
