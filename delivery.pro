@@ -21,7 +21,10 @@ SOURCES += \
     order.cpp \
     pay_success.cpp \
     rigister.cpp \
+    sever_goods.cpp \
+    sever_horder.cpp \
     sever_mainp.cpp \
+    sever_order.cpp \
     shopcar.cpp \
     users.cpp \
     users_business.cpp \
@@ -38,7 +41,10 @@ HEADERS += \
     message_login.h \
     pay_success.h \
     rigister.h \
+    sever_goods.h \
+    sever_horder.h \
     sever_mainp.h \
+    sever_order.h \
     shopcar.h
 
 FORMS += \
@@ -50,7 +56,10 @@ FORMS += \
     message_login.ui \
     pay_success.ui \
     rigister.ui \
+    sever_goods.ui \
+    sever_horder.ui \
     sever_mainp.ui \
+    sever_order.ui \
     shopcar.ui
 
 # Default rules for deployment.

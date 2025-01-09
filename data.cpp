@@ -7,6 +7,7 @@
 #include "client_mainp.h"
 #include "admin_mainp.h"
 
+
 /************
  * user_temp.ini
  * 用于存储当前使用页面者的基本信息
@@ -56,8 +57,14 @@ void data::on_confirm_Button_clicked()
     Users u;
     u.setAcoount(id);
     u.setPasswrod(password);
+<<<<<<< HEAD
 
     int flag=u.search();
+=======
+    QString findname="0";
+    int flag=u.search(findname);
+    u.setName(findname);
+>>>>>>> 607358d0f8788a7c5d5e884324ac7fc268ac7169
     if(flag==0){
         QMessageBox::information(this,"错误","账号或密码错误");
     }
@@ -88,6 +95,10 @@ void data::on_confirm_Button_clicked()
         s_m->show();
         //this->close();
     }
-
+    else if(flag==3){
+        QMessageBox::information(this,"成功","欢迎管理员进入系统");
+        Admin_mainp* a_m=new Admin_mainp;
+        a_m->show();
+    }
 }
 

@@ -17,10 +17,22 @@ Admin_mainp::Admin_mainp(QWidget *parent)
     , ui(new Ui::Admin_mainp)
 {
     ui->setupUi(this);
-    QString filepath="users_info.ini";
+    QString filepath="user_temp.ini";
     QSettings settings(filepath,QSettings::IniFormat);
     //读入数据
-    QString AdminAccount=Users::currentAccount;
+    QString AdminAccount;
+    QStringList groups = settings.childGroups();
+    if (!groups.isEmpty()) {
+        // 进入第一个节
+        QString firstSection = groups.first();
+        settings.beginGroup(firstSection);
+        AdminAccount=settings.value("name").toString();
+
+        settings.endGroup(); // 结束访问组
+    } else {
+        qDebug() << "INI 文件中没有任何节。";
+    }
+    //QString AdminAccount=Users::currentAccount;
     double Money=amount();
     int People=settings.value("totalUsers").toInt();
     //显示数据
