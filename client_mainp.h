@@ -2,20 +2,45 @@
 #define CLIENT_MAINP_H
 
 #include <QWidget>
-namespace Ui {
-class Client_mainp;
-}
+#include "food_show.h"
+#include "shopcar.h"
+#include "all_order.h"
 
-class Client_mainp : public QWidget
+
+QT_BEGIN_NAMESPACE
+namespace Ui {
+class client_mainp;
+}
+QT_END_NAMESPACE
+
+class client_mainp : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit Client_mainp(QWidget *parent = nullptr);
-    ~Client_mainp();
+    client_mainp(QWidget *parent = nullptr);
+    ~client_mainp();
+
+private slots:
+    void on_quitButton_clicked();
+
+
+
+    void on_foodchoice_Button_clicked();
+
+    void on_shopcar_Button_clicked();
+
+    void on_ordermng_Button_clicked();
+
+
+
+    void on_Client_id_label_linkActivated(const QString &link);
 
 private:
-    Ui::Client_mainp *ui;
-};
+    Ui::client_mainp *ui;
+    food_show clint_food_show;
+    shopcar clint_shopcar;
+    all_order clint_all_order;
 
+};
 #endif // CLIENT_MAINP_H

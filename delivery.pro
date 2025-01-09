@@ -10,31 +10,43 @@ CONFIG += c++17
 
 SOURCES += \
     1_main.cpp \
+    all_order.cpp \
     client_mainp.cpp \
     dish.cpp \
     data.cpp \
+    food_show.cpp \
     message_login.cpp \
     order.cpp \
+    pay_success.cpp \
     rigister.cpp \
     sever_mainp.cpp \
+    shopcar.cpp \
     users.cpp \
     users_business.cpp \
     users_client.cpp \
     users_manager.cpp
 
 HEADERS += \
+    all_order.h \
     client_mainp.h \
     data.h \
+    food_show.h \
     message_login.h \
+    pay_success.h \
     rigister.h \
-    sever_mainp.h
+    sever_mainp.h \
+    shopcar.h
 
 FORMS += \
+    all_order.ui \
     client_mainp.ui \
     data.ui \
+    food_show.ui \
     message_login.ui \
+    pay_success.ui \
     rigister.ui \
-    sever_mainp.ui
+    sever_mainp.ui \
+    shopcar.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
