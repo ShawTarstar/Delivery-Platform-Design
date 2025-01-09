@@ -56,6 +56,7 @@ void data::on_confirm_Button_clicked()
     Users u;
     u.setAcoount(id);
     u.setPasswrod(password);
+
     int flag=u.search();
     if(flag==0){
         QMessageBox::information(this,"错误","账号或密码错误");
