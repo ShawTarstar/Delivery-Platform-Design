@@ -5,6 +5,18 @@
 #include "message_login.h"
 #include "rigister.h"
 #include "client_mainp.h"
+#include "admin_mainp.h"
+
+/************
+ * user_temp.ini
+ * 用于存储当前使用页面者的基本信息
+ * [User1]
+ * accountType=1
+ * name="Alice"
+ * account="18211111111"
+ * password="123456"
+ **************/
+QString user_temp="user_temp.ini";
 
 data::data(QWidget *parent)
     : QMainWindow(parent)
@@ -50,17 +62,31 @@ void data::on_confirm_Button_clicked()
     }
     else if(flag==1){
         QMessageBox::information(this,"成功","欢迎顾客进入系统");
-        //Users::currentAccount=id;
+        QSettings settings(user_temp,QSettings::IniFormat);
+        settings.beginGroup(id);
+        settings.setValue("accountType", u.getAccount());
+        settings.setValue("name",u.getName());
+        settings.setValue("account", u.getAccount());
+        settings.setValue("password", u.getPassword());
+        settings.endGroup();
         client_mainp* c_m=new client_mainp;
         c_m->show();
         //this->close();
     }
     else if(flag==2){
         QMessageBox::information(this,"成功","欢迎商家进入系统");
-        //Users::currentAccount=id;
+        QSettings settings(user_temp,QSettings::IniFormat);
+        settings.beginGroup(id);
+        settings.setValue("accountType", u.getAccount());
+        settings.setValue("name",u.getName());
+        settings.setValue("account", u.getAccount());
+        settings.setValue("password", u.getPassword());
+        settings.endGroup();
+
         sever_mainp* s_m=new sever_mainp;
         s_m->show();
         //this->close();
     }
+
 }
 
