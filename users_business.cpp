@@ -12,9 +12,22 @@ bob\luosifen\pixlocation=12345
 
 
 QString busi_data="business_dish_data.ini";
-
+QString filepath="user_temp.ini";
+QSettings settings(filepath,QSettings::IniFormat);
+QString severAccount;
 Business::Business(){
     setName("A");
+    QStringList groups = settings.childGroups();
+    if (!groups.isEmpty()) {
+        // 进入第一个节
+        QString firstSection = groups.first();
+        settings.beginGroup(firstSection);
+        severAccount=settings.value("name").toString();
+
+        settings.endGroup(); // 结束访问组
+    } else {
+        qDebug() << "INI 文件中没有任何节。";
+    }
 }
 /***********************
  * 调用时，按照如下规则调用：
@@ -24,8 +37,8 @@ Business::Business(){
 void Business::addDishList(QString name,QString pixlocation,double price)
 {
     QSettings busi_settings(busi_data,QSettings::IniFormat);
-    busi_settings.beginGroup(getName());
-    QString groupname=QString("%1/%2").arg(getName()).arg(name);
+    busi_settings.beginGroup(severAccount);
+    QString groupname=QString("%1/%2").arg(severAccount).arg(name);
     busi_settings.beginGroup(groupname);
     busi_settings.setValue("name",name);
     busi_settings.setValue("price",price);
@@ -45,13 +58,13 @@ void Business::deleteDishList(QString dishName)
 {
     //QString dishName="luosifen";//此处接入需要删除的菜品名
     QSettings busi_settings(busi_data,QSettings::IniFormat);
-    busi_settings.beginGroup(getName());
+    busi_settings.beginGroup(severAccount);
     double price;
     QString pix;
 
     if(findDishList(dishName,pix,price)==1)
     {
-        QString remove_dishName=QString("%1/%2").arg(getName()).arg(dishName);
+        QString remove_dishName=QString("%1/%2").arg(severAccount).arg(dishName);
         busi_settings.remove(remove_dishName);
 
         qDebug()<<"Dish deleted: "<<dishName;
@@ -74,7 +87,7 @@ void Business::modifyDishList(QString name,QString pixlocation,double price)
     if(findDishList(name,pixlocation,price)==1)
     {
         QSettings settings(busi_data,QSettings::IniFormat);
-        QString keyPrefix=QString("%1/%2").arg(getName()).arg(name);
+        QString keyPrefix=QString("%1/%2").arg(severAccount).arg(name);
 
         settings.setValue(keyPrefix+"/name",name);
         settings.setValue(keyPrefix+ "/price",price);
@@ -92,20 +105,8 @@ void Business::modifyDishList(QString name,QString pixlocation,double price)
 bool Business::findDishList(QString name,QString &pixlocation,double &price)
 {
     int flag=0;
-    QString severAccount;
-    QString filepath="user_temp.ini";
-    QSettings settings(filepath,QSettings::IniFormat);
-    QStringList groups = settings.childGroups();
-    if (!groups.isEmpty()) {
-        // 进入第一个节
-        QString firstSection = groups.first();
-        settings.beginGroup(firstSection);
-        severAccount=settings.value("name").toString();
 
-        settings.endGroup(); // 结束访问组
-    } else {
-        qDebug() << "INI 文件中没有任何节。";
-    }
+
     QString temp=QString("%1/%2").arg(severAccount).arg(name);
     //商家名（getname()）是调用该函数的商家，name是菜品名
     //可以将getname处更改成要查询的商家名，name处更改成菜品名
