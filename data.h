@@ -40,6 +40,7 @@ class Users
     QString password;
     int accountType; //1:顾客 2:商家 3:管理员
 public:
+    static QString currentAccount;
     Users();
     void setName(QString s);
     void setAcoount(QString a);

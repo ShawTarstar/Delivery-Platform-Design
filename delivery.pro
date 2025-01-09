@@ -10,7 +10,9 @@ CONFIG += c++17
 
 SOURCES += \
     1_main.cpp \
+    admin_mainp.cpp \
     all_order.cpp \
+    amount.cpp \
     client_mainp.cpp \
     dish.cpp \
     data.cpp \
@@ -27,7 +29,9 @@ SOURCES += \
     users_manager.cpp
 
 HEADERS += \
+    admin_mainp.h \
     all_order.h \
+    amount.h \
     client_mainp.h \
     data.h \
     food_show.h \
@@ -38,6 +42,7 @@ HEADERS += \
     shopcar.h
 
 FORMS += \
+    admin_mainp.ui \
     all_order.ui \
     client_mainp.ui \
     data.ui \

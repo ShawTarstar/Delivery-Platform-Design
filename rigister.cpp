@@ -39,7 +39,7 @@ void rigister::on_confirm_Button_clicked()
     }
 
     for(auto x:tele){
-        if(x>'9'||x<'1'){
+        if(x>'9'||x<'0'){
             QMessageBox::information(this,"错误","电话号码格式有误!");
             return;
         }

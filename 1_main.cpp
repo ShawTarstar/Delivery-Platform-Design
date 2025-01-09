@@ -11,9 +11,9 @@ int main(int argc, char *argv[])
     data w;
     w.show();
     Client c;
-    c.setName("mike");
-    c.addShopCart();
-    c.createOrder();
+    //c.setName("mike");
+    //c.addShopCart();
+   // c.createOrder();
 
 
     return a.exec();
