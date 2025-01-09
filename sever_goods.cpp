@@ -36,7 +36,26 @@ sever_goods::sever_goods(QWidget *parent)
     QString name;
     double price=0;
 
-    //data::findDishList(name,pixlocation,price,amount);
+    //遍历该商家所有菜品
+    QSettings settings("order_data.ini", QSettings::IniFormat);
+    QString businessName=getbusinessName();
+    // 切换到商家所在的 group（比如 bob）
+    settings.beginGroup(businessName);
+
+    // 遍历该商家下所有的菜品（以 '商家名\菜品名' 为前缀）
+    foreach (const QString &key, settings.childKeys()) {
+        // 通过 '商家名\菜品名' 拆分 key，获取菜品名
+        QStringList parts = key.split("/");
+        if (parts.size() == 2) {
+            QString dishName = parts[1];  // 获取菜品名
+
+            // 读取菜品的详细信息
+            QString name = settings.value(businessName + "/" + dishName + "/name").toString();
+            double price = settings.value(businessName + "/" + dishName + "/price").toDouble();
+            QString pixLocation = settings.value(businessName + "/" + dishName + "/pixlocation").toString();
+        }
+    }
+    settings.endGroup();
 
 }
 
@@ -87,4 +106,25 @@ void sever_goods::deletefood(QString idx){
 
 }
 
+//用于获取该商家的名字
+QString sever_goods::getbusinessName()
+{
+    QString filepath="user_temp.ini";
+    QSettings settings(filepath,QSettings::IniFormat);
+    //读入数据
+    QString businessName;
+    QStringList groups = settings.childGroups();
+    if (!groups.isEmpty()) {
+        // 进入第一个节
+        QString firstSection = groups.first();
+        settings.beginGroup(firstSection);
+        businessName=settings.value("name").toString();
 
+        settings.endGroup(); // 结束访问组
+        return businessName;
+    } else {
+        qDebug() << "INI 文件中没有任何节。";
+        return "";
+    }
+
+}

@@ -18,6 +18,7 @@ signals:
 public:
     explicit sever_goods(QWidget *parent = nullptr);
     ~sever_goods();
+    QString getbusinessName();
 
 private slots:
     void on_back_clicked();
