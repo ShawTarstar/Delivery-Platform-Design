@@ -18,7 +18,10 @@ signals:
 public:
     explicit sever_goods(QWidget *parent = nullptr);
     ~sever_goods();
+
     QString getbusinessName();
+
+    void addline(QString n,double price);
 
 private slots:
     void on_back_clicked();
@@ -26,6 +29,9 @@ private slots:
     void on_add_clicked();
 
     void deletefood(QString idx);
+
+
+
 
 private:
     Ui::sever_goods *ui;

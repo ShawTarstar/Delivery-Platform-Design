@@ -22,6 +22,8 @@ private slots:
 
     void on_order_manage_clicked();
 
+    void on_back_clicked();
+
 private:
     Ui::sever_mainp *ui;
 

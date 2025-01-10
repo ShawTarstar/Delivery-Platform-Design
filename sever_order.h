@@ -21,6 +21,10 @@ private slots:
 
     void on_back_clicked();
 
+    void on_pushButton_2_clicked();
+
+    void addline(int n,double price,int time);
+
 private:
     Ui::sever_order *ui;
 

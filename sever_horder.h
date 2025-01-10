@@ -15,6 +15,8 @@ public:
     explicit sever_horder(QWidget *parent = nullptr);
     ~sever_horder();
 
+    void addline(QString n,int t,double price);
+
 private slots:
     void on_back_clicked();
 

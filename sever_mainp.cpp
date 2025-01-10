@@ -18,6 +18,7 @@ void sever_mainp::on_food_manage_clicked()
 {
     ///打开菜品管理页
     goodsPage.show();
+    //foodPage.show();
 }
 
 
@@ -25,5 +26,11 @@ void sever_mainp::on_order_manage_clicked()
 {
     ///打开订单管理页面
     orderPage.show();
+}
+
+
+void sever_mainp::on_back_clicked()
+{
+    this->close();
 }
 

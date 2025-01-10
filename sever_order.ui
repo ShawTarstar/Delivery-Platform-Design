@@ -13,23 +13,23 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="back">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>70</y>
-     <width>111</width>
-     <height>41</height>
+     <x>390</x>
+     <y>60</y>
+     <width>221</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
-    <string>返回</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;订单管理&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QTableWidget" name="ordertable">
+  <widget class="QTableWidget" name="foodstable">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>60</x>
      <y>160</y>
      <width>831</width>
      <height>421</height>
@@ -39,7 +39,7 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>780</x>
+     <x>760</x>
      <y>70</y>
      <width>111</width>
      <height>41</height>
@@ -49,17 +49,30 @@
     <string>历史订单</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>60</y>
-     <width>221</width>
-     <height>51</height>
+     <x>70</x>
+     <y>70</y>
+     <width>111</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;订单管理&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>返回</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>70</y>
+     <width>101</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>刷新</string>
    </property>
   </widget>
  </widget>
