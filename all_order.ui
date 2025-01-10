@@ -25,232 +25,55 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="back_to_main_Button">
+  <widget class="QTableWidget" name="ordertable">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>161</width>
-     <height>51</height>
+     <x>50</x>
+     <y>170</y>
+     <width>831</width>
+     <height>421</height>
     </rect>
-   </property>
-   <property name="text">
-    <string>返回首页</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="pay_stage_2_label">
-   <property name="geometry">
-    <rect>
-     <x>640</x>
-     <y>469</y>
-     <width>81</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::Shape::Box</enum>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;  用餐完成&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QListView" name="listView">
-   <property name="geometry">
-    <rect>
-     <x>250</x>
-     <y>190</y>
-     <width>501</width>
-     <height>141</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>420</x>
-     <y>80</y>
-     <width>191</width>
-     <height>91</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;全部订单&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="food_sumprice_2">
-   <property name="geometry">
-    <rect>
-     <x>640</x>
-     <y>419</y>
-     <width>81</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::Shape::Box</enum>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;商品价格&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="food_name_2">
-   <property name="geometry">
-    <rect>
-     <x>420</x>
-     <y>426</y>
-     <width>121</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::Shape::Box</enum>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;商品名称&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="food_name_1">
-   <property name="geometry">
-    <rect>
-     <x>430</x>
-     <y>220</y>
-     <width>111</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::Shape::Box</enum>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;商品名称&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_5">
-   <property name="geometry">
-    <rect>
-     <x>270</x>
-     <y>350</y>
-     <width>91</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;历史订单&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="pay_stage_1_label">
-   <property name="geometry">
-    <rect>
-     <x>630</x>
-     <y>289</y>
-     <width>91</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::Shape::Box</enum>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;已付款&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="food_pho_2">
-   <property name="geometry">
-    <rect>
-     <x>270</x>
-     <y>410</y>
-     <width>91</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::Shape::Box</enum>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap>../../../桌面/C++代码/img/testcase/面条.jpg</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="food_sumprice_label">
-   <property name="geometry">
-    <rect>
-     <x>630</x>
-     <y>220</y>
-     <width>91</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::Shape::Box</enum>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;商品价格&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="food_pho_1">
-   <property name="geometry">
-    <rect>
-     <x>270</x>
-     <y>210</y>
-     <width>91</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::Shape::Box</enum>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap>../../../桌面/C++代码/img/testcase/蛋炒饭.jpg</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>160</y>
-     <width>91</width>
-     <height>31</height>
+     <x>380</x>
+     <y>70</y>
+     <width>221</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;正在进行&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;订单管理&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QListView" name="listView_2">
+  <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>390</y>
-     <width>501</width>
-     <height>121</height>
+     <x>60</x>
+     <y>80</y>
+     <width>111</width>
+     <height>41</height>
     </rect>
    </property>
+   <property name="text">
+    <string>返回</string>
+   </property>
   </widget>
-  <zorder>listView_2</zorder>
-  <zorder>back_to_main_Button</zorder>
-  <zorder>pay_stage_2_label</zorder>
-  <zorder>listView</zorder>
-  <zorder>label_2</zorder>
-  <zorder>food_sumprice_2</zorder>
-  <zorder>food_name_2</zorder>
-  <zorder>food_name_1</zorder>
-  <zorder>label_5</zorder>
-  <zorder>pay_stage_1_label</zorder>
-  <zorder>food_pho_2</zorder>
-  <zorder>food_sumprice_label</zorder>
-  <zorder>food_pho_1</zorder>
-  <zorder>label</zorder>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>80</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>历史订单</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

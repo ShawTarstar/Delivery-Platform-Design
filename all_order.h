@@ -14,27 +14,13 @@ class all_order : public QWidget
 public:
     explicit all_order(QWidget *parent = nullptr);
     ~all_order();
+    void addOrderData(const QString &orderNumber, const QString &amount, const QString &time, const QString &operation);
 
 private slots:
 
+    void on_back_clicked();
 
-    void on_food_pho_1_linkActivated(const QString &link);
-
-    void on_food_name_1_linkActivated(const QString &link);
-
-    void on_food_sumprice_label_linkActivated(const QString &link);
-
-    void on_pay_stage_1_label_linkActivated(const QString &link);
-
-    void on_food_pho_2_linkActivated(const QString &link);
-
-    void on_food_name_2_linkActivated(const QString &link);
-
-    void on_food_sumprice_2_linkActivated(const QString &link);
-
-    void on_pay_stage_2_label_linkActivated(const QString &link);
-
-    void on_back_to_main_Button_clicked();
+    void on_ordertable_cellActivated(int row, int column);
 
 private:
     Ui::all_order *ui;

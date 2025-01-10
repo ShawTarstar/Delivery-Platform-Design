@@ -11,6 +11,13 @@ food_show::food_show(QWidget *parent)
 
 {
     ui->setupUi(this);
+    ui->foodstable->setColumnCount(3);
+    QStringList foodList;
+    foodList << "名称";
+    foodList << "价格";
+    foodList << "操作";
+    ui->foodstable->setHorizontalHeaderLabels(foodList);
+    ui->foodstable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch); ///设置列宽
 
 
 }
@@ -26,97 +33,10 @@ void food_show::on_food_show_quit_clicked()
 }
 
 
-void food_show::on_food_pho1_linkActivated(const QString &link)
-{
 
 
 
-}
-
-
-
-
-
-void food_show::on_food_add_1_clicked()
-{
-
-}
-
-
-void food_show::on_food_pho2_linkActivated(const QString &link)
-{
-
-}
-
-
-
-
-
-void food_show::on_food_add_2_clicked()
-{
-
-}
-
-
-void food_show::on_food_pho3_linkActivated(const QString &link)
-{
-
-}
-
-
-
-
-
-void food_show::on_food_add_3_clicked()
-{
-
-}
-
-
-void food_show::on_food_pho4_linkActivated(const QString &link)
-{
-
-}
-
-
-
-void food_show::on_food_add_4_clicked()
-{
-
-}
-
-
-void food_show::on_pushButton_clicked()
-{
-
-}
-
-
-void food_show::on_pushButton_2_clicked()
-{
-
-}
-
-
-void food_show::on_food_name_1_label_linkActivated(const QString &link)
-{
-
-}
-
-
-void food_show::on_food_name_2_label__linkActivated(const QString &link)
-{
-
-}
-
-
-void food_show::on_food_name_2_label_linkActivated(const QString &link)
-{
-
-}
-
-
-void food_show::on_food_name_4_label_linkActivated(const QString &link)
+void food_show::on_foodstable_cellActivated(int row, int column)
 {
 
 }
